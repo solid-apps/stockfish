@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play Stockfish</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>♞</text></svg>">
+  <link rel="stylesheet" href="vendor/chessground.base.css">
+  <link rel="stylesheet" href="vendor/chessground.brown.css">
+  <link rel="stylesheet" href="vendor/chessground.cburnett.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <div class="eval-col">
+      <div id="eval-bar"><div id="eval-white"></div></div>
+      <div id="eval-num">0.0</div>
+    </div>
+    <div class="board-col">
+      <div id="board" class="cg-wrap"></div>
+      <div id="promo-overlay" class="hidden">
+        <div class="promo-box">
+          <button data-piece="q">♛</button>
+          <button data-piece="r">♜</button>
+          <button data-piece="b">♝</button>
+          <button data-piece="n">♞</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="panel">
+      <h1>Play Stockfish</h1>
+      <p id="status">Loading engine…</p>
+
+      <div class="controls">
+        <label>
+          Endgame trainer
+          <select id="trainer-select">
+            <option value="">— free play —</option>
+          </select>
+        </label>
+        <label>
+          Play as
+          <select id="color-select">
+            <option value="white" selected>White</option>
+            <option value="black">Black</option>
+            <option value="random">Random</option>
+          </select>
+        </label>
+        <label>
+          <span>Strength <span id="elo-label">1600</span> Elo</span>
+          <input id="elo" type="range" min="1320" max="3190" step="10" value="1600">
+        </label>
+        <div class="buttons">
+          <button id="hint">Get a hint</button>
+        </div>
+        <div class="buttons">
+          <button id="new-game">New game</button>
+          <button id="undo">Undo</button>
+          <button id="flip">Flip board</button>
+          <button id="mute" title="Toggle sound">🔊</button>
+        </div>
+      </div>
+
+      <ol id="moves"></ol>
+    </aside>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

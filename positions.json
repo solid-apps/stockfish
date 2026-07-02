@@ -1,0 +1,1892 @@
+[
+ {
+  "fen": "8/8/8/3k4/8/8/3PK3/8 w - - 0 1",
+  "name": "Using Key Squares",
+  "category": "Fundamentals",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2k5/8/2K5/2P5/8 w - - 0 1",
+  "name": "Key Squares vs Opposition",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/2k5/8/2P5/2K5 w - - 0 1",
+  "name": "Position 1",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/5p1p/8/8/5P1P/5PK1/8 w - - 0 1",
+  "name": "Before",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/5p1p/8/4K3/5P1P/5P2/8 b - - 0 1",
+  "name": "After",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5pk1/5p1p/8/4K3/5P1P/5P2/8 w - - 0 1",
+  "name": "King Infiltration",
+  "category": "Fundamentals",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3PK3/8/8/4k3 w - - 0 1",
+  "name": "Escorting a Pawn",
+  "category": "Fundamentals",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p4k2/1p6/1P6/P7/8/5K2/8 w - - 0 1",
+  "name": "Practice Position",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/4k3/8/4K3/4P3/8/8/8 w - - 0 1",
+  "name": "Winning with Opposition",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
+  "name": "Losing Without Opposition",
+  "category": "Fundamentals",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/3k4/3P4/2K5/8/2b2B2 w - - 0 1",
+  "name": "The Classic Blockade",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/2p5/2Pk4/3P4/3K4/4B3/2b5 w - - 0 1",
+  "name": "Why Extra Pawns Don't Always Help",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp5k/8/5PP1/8/6K1/8/2B3b1 w - - 0 1",
+  "name": "1. Pawns on Both Sides",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/3PP3/8/8/6k1/5b2/4K3 w - - 0 1",
+  "name": "2. Connected Passed Pawns (Far Advanced)",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p7/Pp3k2/1P6/8/5K2/B7/5b2 w - - 0 1",
+  "name": "3. King Penetration",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/1Pk5/P7/8/6B1/4K2b w - - 0 1",
+  "name": "4. The \"Two Diagonals\" Rule",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p4p1k/8/8/1PP5/8/5K2/2B3b1 w - - 0 1",
+  "name": "The Rule of 7 Squares",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/3pPp2/3P1P2/8/8/3bK2B w - - 0 1",
+  "name": "Create a [Fortress](/strategic-themes/fortresses)",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/2p1k3/1pP1p3/1P2P3/8/6K1/B6b w - - 0 1",
+  "name": "Keep Your Bishop Active",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p4k1/1P4p1/6P1/8/8/4K3/B6b b - - 0 1",
+  "name": "Use Your King",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/1p3pkp/p5p1/P7/1P6/6P1/5PKP/3B2b1 w - - 0 1",
+  "name": "Famous Example: Fischer's Technique",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/8/3PP3/8/8/3bK2B w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p6p/1k6/1P6/1P2b3/8/6K1/2B5 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p5kp/6p1/8/PP6/8/5K2/2B3b1 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p4k1/p3p3/P3P3/8/5B2/6K1/5b2 w - - 0 1",
+  "name": "1. Bishop Activity",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/p1p3p1/P1P3P1/8/5B2/6K1/8 w - - 0 1",
+  "name": "2. Pawns on Opposite Color",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/p7/K7/B7/k7 w - - 0 1",
+  "name": "The \"Wrong Rook Pawn\" Exception",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/5B2/3P4/3K4/8/3b3k w - - 0 1",
+  "name": "Winning Cases",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "B7/8/k7/P7/8/1K6/8/1b6 b - - 0 1",
+  "name": "Drawing Cases",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/pp6/8/1P4k1/P7/8/5B2/4K3 w - - 0 1",
+  "name": "Winning Technique",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/PP3k2/8/5b2/8/2K5 b - - 0 1",
+  "name": "Defensive Resources",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/1p3pk1/p5p1/P1B3P1/1P6/8/6K1/3b4 w - - 0 1",
+  "name": "Complex Example",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p2k3/p5p1/P5P1/1P6/4B3/6K1/4b3 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5p2/4bkp1/8/5PP1/4BK2/8/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/1p6/1P2k3/P7/4K3/2B5/1b6 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p4k1/p5p1/P5B1/1P4K1/8/8/5n2 w - - 0 1",
+  "name": "The Bishop's Advantage: Mobility",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3k4/3Np3/2p1P3/2P5/P4K2/8/3b4 w - - 0 1",
+  "name": "The Knight's Advantage: Outposts",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/p4n1p/P5p1/6P1/5B1P/5K2/8 w - - 0 1",
+  "name": "Pawns on Both Flanks: Bishop Wins",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/8/6KP/8/8/8/N7/8 w - - 0 1",
+  "name": "Wrong-Colored Bishop",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/4k3/2p1b1p1/1pP1Np1p/1P3P1P/6P1/8/5K2 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/8/5p2/5P2/8/PP3K2/3B4 w - - 0 1",
+  "name": "Good Bishop",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/4p3/3pPp2/3P1P2/8/PP3K2/3B4 w - - 0 1",
+  "name": "Bad Bishop",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp2k3/4p3/3pP3/3P4/8/PP3K2/3B4 w - - 0 1",
+  "name": "Defensive Weakness",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p2k3/p3p3/P1p1P3/2P1B3/8/6K1/8 w - - 0 1",
+  "name": "Effective Material Disadvantage",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p1b2k1/p3p1p1/P3Pp1p/1P3P1P/6P1/8/4B1K1 w - - 0 1",
+  "name": "Good Bishop vs Bad Bishop",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p1b1k2/p3p1p1/P5P1/1P1B1P2/8/6K1/8 w - - 0 1",
+  "name": "Creating Weaknesses",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/4p3/3pP3/3P4/8/PP3K2/3B4 w - - 0 1",
+  "name": "Method 1: Trade It",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/4p3/3pP3/3P4/B7/PP6/5K2 w - - 0 1",
+  "name": "Method 2: Move It Outside the Pawn Chain",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/4p3/3pPp2/3P1P2/8/PPB2K2/8 w - - 0 1",
+  "name": "Method 3: Change the Pawn Structure",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/4p3/3pP3/3P4/8/PP3KB1/8 w - - 0 1",
+  "name": "Method 4: Put the Bishop on a Different Diagonal",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p2k3/p1p1p3/P1PpPp2/1P1P1P2/8/8/4BK2 w - - 0 1",
+  "name": "Famous Example: The \"Tall Pawn\"",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp6/4p1k1/3pPp2/3P1P2/2B5/PP6/6K1 w - - 0 1",
+  "name": "The \"Active Bad Bishop\"",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp2k3/2p1p3/2PpP3/1P1P4/8/P4K2/4B3 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p3k2/p3p3/P1pnPp2/2P2P2/8/1B3K2/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/4p3/3pP3/3P4/8/PP6/B4K2 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p4k2/1p2p1p1/3pP1P1/1P1P4/P7/5K2/4B3 w - - 0 1",
+  "name": "Exercise 4",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/1k6/1P6/1K6/1N6/8 w - - 0 1",
+  "name": "Knights Cannot Lose Tempo",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/1k6/1P6/1K6/1N6/8 b - - 0 1",
+  "name": "Knights Cannot Lose Tempo",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3Pk3/8/2K5/n6N w - - 0 1",
+  "name": "Drawing Cases",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/7n/8/3Pk3/8/2K5/8/6N1 w - - 0 1",
+  "name": "Winning Cases",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2PP4/4k3/8/8/3NK3 w - - 0 1",
+  "name": "Connected Passed Pawns",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/P7/8/4k3/4P3/4K1N1 w - - 0 1",
+  "name": "Isolated Pawns",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/8/3N4/8/8/PP2K3/8 w - - 0 1",
+  "name": "The Centralized Knight",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp2k3/4p3/3pN3/3P4/8/PP2K3/8 w - - 0 1",
+  "name": "Knight Outposts",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "r7/pp2k3/8/8/8/2N5/PP2K3/8 w - - 0 1",
+  "name": "Basic Fork",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/pp1k4/8/8/8/8/PP2K3/4r1N1 w - - 0 1",
+  "name": "The Royal Fork",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/8/3N4/8/4K3/pp6/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5p2/3k1Np1/8/6P1/5K2/8/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p3k2/1P6/8/8/5K2/8/6N1 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Minor Piece Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/P1k5/2n5/1K6/8 w - - 0 1",
+  "name": "Exercise 4",
+  "category": "Minor Piece Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/8/ppp5/PPP5/8/6K1/8 w - - 0 1",
+  "name": "With Kings Present",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/8/1ppp4/1PPP4/8/5K2/8 w - - 0 1",
+  "name": "Complex Example",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3k4/8/2ppp3/2PPP3/8/3K4/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/1P6/2P5/8/8/8/K6k w - - 0 1",
+  "name": "The Self-Defending Mechanism",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/1PP5/8/8/6k1/K7 w - - 0 1",
+  "name": "They March on Their Own",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "r6k/8/1PP5/8/8/8/8/6K1 w - - 0 1",
+  "name": "Two Connected Passers on the Sixth Beat a Rook",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "r6k/8/8/1PP5/8/8/8/6K1 b - - 0 1",
+  "name": "…But Not on the Fifth",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/3k4/8/3PP3/8/8/4K3 b - - 0 1",
+  "name": "Against a Lone King",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3PK3/8/5k2/8 w - - 0 1",
+  "name": "What Are Key Squares?",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "4k3/8/8/8/3P4/8/4K3/8 w - - 0 1",
+  "name": "Pawns on 2nd-4th Rank",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "4k3/8/8/3P4/8/8/4K3/8 w - - 0 1",
+  "name": "Pawns on 5th Rank",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/8/3P4/8/8/8/4K3/8 w - - 0 1",
+  "name": "Pawns on 6th Rank",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/3P4/8/8/8/8/4K3/8 w - - 0 1",
+  "name": "Pawns on 7th Rank",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/8/P7/8/8/1K6/8 w - - 0 1",
+  "name": "Rook Pawns Are Special",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3P4/8/3K2k1/8 w - - 0 1",
+  "name": "Example 1: Reaching the Key Square",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/3k4/8/3PK3/8/8/8 b - - 0 1",
+  "name": "Example 2: Defending Against Key Squares",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/3k4/8/3PK3/8/8 w - - 0 1",
+  "name": "Opposition vs Key Squares",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/5k2/3p4/3P4/3K4/8/8 w - - 0 1",
+  "name": "Key Squares with Multiple Pawns",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/8/4P3/4K3/1k6 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/8/4K3/4P3/8/8/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/p7/k7/8/1K6/8 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3k4/8/3PK3/8/8/8/8 w - - 0 1",
+  "name": "Exercise 4",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3k4/8/3PK3/8 w - - 0 1",
+  "name": "Winning Conditions",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/3k4/8/3K4/3P4/8 w - - 0 1",
+  "name": "The Rule: King in Front",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/3k4/8/8/3PK3/8 b - - 0 1",
+  "name": "Drawing Zones",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/k7/8/K7/P7/8 w - - 0 1",
+  "name": "The Rook Pawn Problem",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/3p4/3P4/4K3/8/8 w - - 0 1",
+  "name": "Simple Example",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/1p1k4/1P6/3K4/8/8 w - - 0 1",
+  "name": "The Trebuchet",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3pk3/8/3K4/8 w - - 0 1",
+  "name": "Practical Application",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/5p2/P3KP2/8/8/8 w - - 0 1",
+  "name": "The Concept",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/5k2/P4p2/5P2/5K2/8/8 w - - 0 1",
+  "name": "Calculating the Win",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/p7/P7/1P6/5K2/8/8 w - - 0 1",
+  "name": "Creating an Outside Passed Pawn",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/k7/P7/8/5K2/5p2/8 w - - 0 1",
+  "name": "Rook Pawns and Counterplay",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/3k4/1p1p4/1P1P4/3K4/8/8 w - - 0 1",
+  "name": "Locked Pawns",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/1P4p1/6P1/5K2/8/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5k2/8/P2p4/3P4/3K4/8/8 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp2kppp/8/8/8/8/PPP2PPP/4K3 w - - 0 1",
+  "name": "Why Queenside Majorities Are Better",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp2k1pp/8/8/8/8/PPP2PPP/4K3 w - - 0 1",
+  "name": "Queenside Majority in Action",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp2k1pp/8/8/2P5/8/PP3PPP/4K3 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/7k/8/8/8/P6p/K7 w - - 0 1",
+  "name": "Step 2: Check for Checks",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/k7/8/8/p6P/7K w - - 0 1",
+  "name": "Promotion with Check",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/8/8/8/P1k4p/7K w - - 0 1",
+  "name": "The Skewer/Fork After Promotion",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/6k1/8/p7/8/6PP/6K1 w - - 0 1",
+  "name": "Complex Example",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/6k1/8/p7/7P/7K w - - 0 1",
+  "name": "King Position Matters",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/8/p4k2/8/7P/2K5 w - - 0 1",
+  "name": "King Position Matters",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/6k1/p7/7P/6K1 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/k7/7p/P7/8/K7 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/2Pp4/3P4/8/5k2/2K5 w - - 0 1",
+  "name": "What Makes It Special",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/2Pp4/3P4/8/8/4K3 w - - 0 1",
+  "name": "The Basic Winning Technique",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/2p1p3/1PPP4/8/8/4K3 w - - 0 1",
+  "name": "Method 1: Advance a Phalanx",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3k4/8/2pP4/2P5/8/8/4K3 w - - 0 1",
+  "name": "Method 2: A Free King",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/2Pp4/3P4/8/6p1/6K1 w - - 0 1",
+  "name": "Protected Passed Pawn vs King + Pawn",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/p1Pp4/P2P4/8/6K1/8 w - - 0 1",
+  "name": "The \"Squeeze\" Technique",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/2k5/2Pp4/2pP4/8/8/4K3 w - - 0 1",
+  "name": "Blocked Position",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/7p/3Pp2P/2P5/8/2K2k2 w - - 0 1",
+  "name": "Wrong Side of the Board",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/2k5/2Pp4/3P4/8/5K2/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/1pp5/1Pp5/2P5/5k2/2K5 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/4p3/3pPp2/3P1P2/8/8/6K1 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/2Pp4/3P4/8/8/2K5 w - - 0 1",
+  "name": "Exercise 4",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/7P/6K1/8/8/8/8/8 w - - 0 1",
+  "name": "The Basic Drawing Pattern",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/7k/8/8/8/8/6PK/8 w - - 0 1",
+  "name": "The Winning vs Drawing Zone",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/7k/8/8/6PK/8 w - - 0 1",
+  "name": "The Winning vs Drawing Zone",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/5K1P/8/8/8/8/8/8 w - - 0 1",
+  "name": "The Corner Fortress",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/7P/8/8/8/8/6KB/8 w - - 0 1",
+  "name": "When the Bishop is on the Right Color",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/7P/5N2/6K1/8/8/8/8 w - - 0 1",
+  "name": "Rook Pawn + Knight",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "k7/P7/1K6/8/8/8/8/8 w - - 0 1",
+  "name": "The a-Pawn Mirror",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p6k/8/8/8/8/P6K/8 w - - 0 1",
+  "name": "Rook Pawn vs Rook Pawn",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/7p/5k1P/8/6K1 w - - 0 1",
+  "name": "Last Resort Defense",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/6k1/7p/7P/6K1 w - - 0 1",
+  "name": "The Stalemate Trick",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/8/6k1/6P1/5K2 b - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5B1k/7P/6K1/8/8/8/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/5k2/8/8/8/P4K2/8 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/7k/8/6KP/8/4B3/8/8 w - - 0 1",
+  "name": "Exercise 4",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/6k1/5pp1/5P1P/6P1/6K1/8 w - - 0 1",
+  "name": "The Drawing Setup for Black",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5p2/5kp1/7p/5PPP/8/6K1/8 w - - 0 1",
+  "name": "When White Wins",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/6k1/6p1/5pP1/5P2/6K1/8 w - - 0 1",
+  "name": "Standard Drawing Position",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/8/5pP1/5P2/8/6K1/8 w - - 0 1",
+  "name": "When the Extra Pawn Wins",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/6p1/5p1p/5P1P/6P1/6K1/8 w - - 0 1",
+  "name": "g4-g5 Break (4 vs 3)",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/6p1/5p2/5PPP/8/6K1/8 w - - 0 1",
+  "name": "h4-h5 Break (4 vs 3)",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pkp/6p1/5P2/6PP/8/r7/4R1K1 w - - 0 1",
+  "name": "4 vs 3 with Rooks",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/6p1/8/5PP1/8/r7/4R1K1 w - - 0 1",
+  "name": "3 vs 2 with Rooks",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/5k2/5p1p/5P1P/6PK/8/8 w - - 0 1",
+  "name": "Example 1: Failed Breakthrough",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/5k2/4pP2/4P3/6K1/8/8 w - - 0 1",
+  "name": "Example 2: Successful Outflanking",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/6k1/5ppp/5P1P/6P1/6K1/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/5p2/5Pp1/6Pp/7P/6K1/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/5k2/6p1/5pPp/5P1P/8/5K2 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/5bp1/7p/5P1P/6P1/5BK1/8 w - - 0 1",
+  "name": "Exercise 4",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3k4/8/3Pp3/4P3/3K4/8/8 w - - 0 1",
+  "name": "Winning by Outflanking",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3k4/4p3/3KP3/8/P7/8/8 w - - 0 1",
+  "name": "A Spare Tempo",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/2k5/8/2K5/8/2P5/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Pawn Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/4p3/4P3/4K3/8/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Pawn Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/8/6K1/8/8/8/8/Q7 w - - 0 1",
+  "name": "Back Rank Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/3k4/8/5K2/8/7Q w - - 0 1",
+  "name": "Box Method Setup",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/8/6K1/8/8/8/8/R7 w - - 0 1",
+  "name": "Rook Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3k4/8/8/KR6 w - - 0 1",
+  "name": "Pushing the King",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "3k4/8/3K4/3P4/8/8/8/8 w - - 0 1",
+  "name": "Opposition Win",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "3k4/8/3K4/8/3P4/8/8/8 w - - 0 1",
+  "name": "Key Square",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/R7/8/8/8/8/8/1R2K3 w - - 0 1",
+  "name": "Two Rooks Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/8/5K2/8/8/8/8/6Q1 w - - 0 1",
+  "name": "Queen + King Teamwork",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/5K2/6B1/8/8/8/3B4/8 w - - 0 1",
+  "name": "Diagonal Squeeze",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "k7/8/1K6/8/5B2/7B/8/8 w - - 0 1",
+  "name": "Corner Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "k7/2K5/8/8/8/8/2BN4/8 w - - 0 1",
+  "name": "Wrong Corner Trap",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/5K2/8/6N1/8/8/3B4/8 w - - 0 1",
+  "name": "Knight Dance",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/8/6K1/8/8/8/8/1Q6 w - - 0 1",
+  "name": "Staircase Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/5ppp/8/8/8/8/5PPP/3Q2K1 w - - 0 1",
+  "name": "Kiss of Death",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/5ppp/8/8/1B6/8/5PPP/R5K1 w - - 0 1",
+  "name": "Rook + Bishop Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "2r3k1/8/8/5N2/8/8/8/R5K1 w - - 0 1",
+  "name": "Rook + Knight Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/4N1pk/8/8/8/3R4/8/4K3 w - - 0 1",
+  "name": "Anastasia's Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/R7/5N2/8/8/8/6K1/8 w - - 0 1",
+  "name": "Arabian Mate",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "1K1k4/1P6/8/8/8/8/r7/5R2 w - - 0 1",
+  "name": "Building the Bridge",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "2K5/2P5/4k3/8/8/8/r7/3R4 w - - 0 1",
+  "name": "King March",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "4k3/r7/8/3KP3/8/8/8/1R6 b - - 0 1",
+  "name": "Third Rank Defense",
+  "category": "Practice Puzzles",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "4k3/1R6/r3P3/3K4/8/8/8/8 b - - 0 1",
+  "name": "Checking from Behind",
+  "category": "Practice Puzzles",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/R7/8/4k3/8/8/4P3/r5K1 w - - 0 1",
+  "name": "Active Rook",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "r7/8/8/P7/8/8/4K1k1/R7 w - - 0 1",
+  "name": "Rook Behind Passer",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/5ppp/8/8/8/8/8/R5K1 w - - 0 1",
+  "name": "Back Rank Threat",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2k3r1/8/8/8/R3K3 w - - 0 1",
+  "name": "Skewer",
+  "category": "Practice Puzzles",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "4K3/8/8/8/7Q/8/3p4/3k4 w - - 0 1",
+  "name": "The Winning Technique",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7K/7Q/8/8/8/8/p7/k7 w - - 0 1",
+  "name": "Rook Pawn (a- or h-file)",
+  "category": "Queen Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7K/8/8/8/3Q4/8/2p5/2k5 w - - 0 1",
+  "name": "Bishop Pawn (c- or f-file)",
+  "category": "Queen Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7Q/8/8/8/8/2K5/p7/k7 w - - 0 1",
+  "name": "Beating the Exception",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7K/8/8/8/4Q3/8/2p5/2k5 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Queen Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7K/8/8/8/8/5Q2/p7/k7 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Queen Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "Q7/8/8/8/8/8/p4K2/k7 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/5r2/8/3Q4/8/8/8/4K3 w - - 0 1",
+  "name": "Step 1: Centralize",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/5Q2/8/4r3/4K1k1 w - - 0 1",
+  "name": "Basic Position",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "1Q6/8/8/8/8/1r6/1k6/3K4 w - - 0 1",
+  "name": "The Philidor Position (Q vs R)",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "1Q6/8/8/8/8/1rk5/8/1K6 w - - 0 1",
+  "name": "Breaking the Defense",
+  "category": "Queen Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/4k3/8/2r5/K3Q3 b - - 0 1",
+  "name": "Drawing Fortress (Rare)",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/3Q4/8/8/3rk3/6K1 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6r1/8/8/Q7/8/4K3/8/6k1 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Queen Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/R4pk1/6p1/8/8/6P1/5P1K/r7 w - - 0 1",
+  "name": "The Seventh Rank",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/6p1/8/8/6PR/r4PK1/8 w - - 0 1",
+  "name": "Classic Example: Active vs Passive",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/R4p2/5kp1/8/8/6P1/r4P1K/8 w - - 0 1",
+  "name": "Activity Over Material",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/8/8/1P6/8/8/1R2K3 w - - 0 1",
+  "name": "Your Passed Pawn",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p4k1/8/8/8/8/8/R3K3 w - - 0 1",
+  "name": "Opponent's Passed Pawn",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "r7/1R3pk1/6p1/8/8/4P1P1/5P1K/8 b - - 0 1",
+  "name": "The Danger of Passive Defense",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5pk1/6p1/8/8/6P1/r4PKR/8 b - - 0 1",
+  "name": "Activating a Passive Rook",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5pk1/3R2p1/8/8/6P1/5P1K/r7 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7R/8/8/8/1p6/1k6/8/4K3 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "1K3k2/1P6/8/8/8/8/r7/2R5 w - - 0 1",
+  "name": "The Position",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1P1k4/8/1K6/2R5/8/8/1r6 w - - 0 1",
+  "name": "Step 2: Advance the King",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1P1k4/8/1K6/1R6/8/8/1r6 b - - 0 1",
+  "name": "Step 3: Block with the Rook (The Bridge!)",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/8/8/8/3pk3/8/3K4/3R4 w - - 0 1",
+  "name": "The Position",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/8/3pk3/3R4/3K4/8 b - - 0 1",
+  "name": "Key Principle: Third Rank Defense",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3p4/4k3/8/8/8/3K4/3R4 w - - 0 1",
+  "name": "When the Pawn Advances",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/4k3/3p4/3R4/3K4/8 b - - 0 1",
+  "name": "Phase 1: Third Rank Defense",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3pk3/8/8/8/3R4/3K4/8 w - - 0 1",
+  "name": "Phase 2: Switch to Checking",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/4k3/3p4/8/3K4/3R4 b - - 0 1",
+  "name": "Too Passive",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/3k4/3p4/8/8/3K4/3R4 w - - 0 1",
+  "name": "Practice Position",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "K7/P7/8/8/8/8/7r/5k2 w - - 0 1",
+  "name": "Why Rook Pawns Are Different",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "K7/P7/8/8/8/8/7r/7k w - - 0 1",
+  "name": "The Winning Zone",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "R7/8/P4r2/8/8/6k1/8/7K w - - 0 1",
+  "name": "The Vancura Position (Drawing Technique)",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "K7/P7/8/8/4k3/8/7r/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Rook Endgames",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/P7/8/8/5k2/K7/8/r7 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/2R5/8/3p4/3k4/8/8/4K3 w - - 0 1",
+  "name": "Rook Easily Wins",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/3p4/3k4/8/8/8/R3K3 w - - 0 1",
+  "name": "Critical: Pawn on 6th Rank",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3p4/8/3k4/8/8/8/R3K3 w - - 0 1",
+  "name": "Winning Position",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/3pk3/8/8/8/8/8/R3K3 w - - 0 1",
+  "name": "Drawing Position (for Black)",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6pk/8/8/8/8/8/R3K3 w - - 0 1",
+  "name": "The \"Long Side\" Principle",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/8/8/8/8/8/R6K w - - 0 1",
+  "name": "Pawn on 7th with Adjacent King",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "k7/P7/8/8/8/8/8/R6K w - - 0 1",
+  "name": "The Rook Pawn Exception",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/4p3/4k3/8/8/R3K3 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p6/1k6/8/8/8/8/R3K3 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/7p/8/8/8/8/8/R6K w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Rook Endgames",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/4k3/R7/4K3/8/3r4/8 w - - 0 1",
+  "name": "Classic Example",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/6p1/6P1/5P2/4K3/8/8 w - - 0 1",
+  "name": "Example: King Improvement",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "2R5/4k3/4p3/4P3/8/8/1r6/4K3 w - - 0 1",
+  "name": "Example: Piece Improvement",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pk1/4p3/4P3/8/4K3/3R4/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/1p2k3/1P6/2K5/8/6r1/5R2 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2n5/8/1k6/8/K1B5 w - - 0 1",
+  "name": "Fortress: Knight Blockade",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/4k3/8/3pp3/3N4/4K3/8/8 w - - 0 1",
+  "name": "Fortress: Knight Blockade",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "k7/8/K7/P7/8/3B4/8/8 w - - 0 1",
+  "name": "Fortress: Bishop of Wrong Color + Rook Pawn",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/6p1/6P1/8/4B3/5K2/8 w - - 0 1",
+  "name": "Breaking a Fortress",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/7P/5K2/8/8/8/8/3B4 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/1k6/1P6/K7/8/B7/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2k5/2P5/2K5/8/5r2 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5pk1/6p1/1P4P1/5K2/8/8/8 w - - 0 1",
+  "name": "Classic Example",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp3k2/8/2P5/PP6/4K3/8/8 w - - 0 1",
+  "name": "Passed Pawn Creation",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/p3k3/2p1p3/2PnP3/1P6/P2B4/4K3/8 w - - 0 1",
+  "name": "Positional Two Weaknesses",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/1p4k1/p5p1/P5P1/1P3K2/8/8/8 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/pp4kp/6p1/8/3R4/6PP/PP3PK1/r7 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/8/6K1/5Q2/8/8/8/8 w - - 0 1",
+  "name": "King in the Corner",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/5K2/4Q3/8/8/8/8/6r1 b - - 0 1",
+  "name": "Piece Sacrifice for Stalemate",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "4k3/8/2K5/8/8/8/8/7Q w - - 0 1",
+  "name": "Throwing Away Material — When It Fails",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "4k3/8/2K5/8/8/8/8/r6Q b - - 0 1",
+  "name": "Throwing Away Material — When It Fails",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "5k2/8/4KP2/8/8/8/8/8 w - - 0 1",
+  "name": "King Trapped by Own Pawns",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/5pkp/6p1/8/8/5PPK/7P/8 w - - 0 1",
+  "name": "Pawn Barriers",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7K/8/8/8/8/5Q2/p7/k7 b - - 0 1",
+  "name": "Stalemate in Queen Endgames",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/6R1/7p/5k2/8/8/8/4K3 w - - 0 1",
+  "name": "Exercise 1",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/5R1P/8/8/8/8/8/6K1 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "7k/4Q3/8/8/8/8/8/4K3 w - - 0 1",
+  "name": "Exercise 3",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/4k3/8/4K3/4P3/8 w - - 0 1",
+  "name": "Classic Example",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2k5/3p4/3K4/3P4/8 w - - 0 1",
+  "name": "Mutual Zugzwang",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/1k6/1P6/1K6/8/8 w - - 0 1",
+  "name": "With Triangulation",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/8/8/2kp4/8/2KP4/8/8 w - - 0 1",
+  "name": "With a Passed Pawn",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "6k1/5ppp/8/8/8/8/5PPP/6K1 w - - 0 1",
+  "name": "Reti-like Zugzwang",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "5k2/5P2/5K2/8/8/8/8/r7 w - - 0 1",
+  "name": "Not Just King Endgames",
+  "category": "Strategic Themes",
+  "goal": "win",
+  "playerSide": "b"
+ },
+ {
+  "fen": "8/5pk1/6p1/5P2/4K3/8/8/8 w - - 0 1",
+  "name": "Breaking Fortress with Zugzwang",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ },
+ {
+  "fen": "8/6k1/6P1/6K1/8/8/8/8 w - - 0 1",
+  "name": "Exercise 2",
+  "category": "Strategic Themes",
+  "goal": "draw",
+  "playerSide": "w"
+ }
+]
