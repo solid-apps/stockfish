@@ -102,6 +102,9 @@ const promoOverlay = document.getElementById('promo-overlay');
 const trainerSelect = document.getElementById('trainer-select');
 const evalFill = document.getElementById('eval-white');
 const evalNum = document.getElementById('eval-num');
+const analysisEl = document.getElementById('analysis');
+const graphEl = document.getElementById('graph');
+const summaryEl = document.getElementById('analysis-summary');
 
 // --- Eval bar -----------------------------------------------------------------
 
@@ -143,6 +146,155 @@ async function evalCurrent() {
     setEval(score, fenAtRequest.split(' ')[1]);
   }
 }
+
+// --- Post-game analysis graph -------------------------------------------------
+
+const GRAPH_W = 560;
+const GRAPH_H = 90;
+
+// lichess-style judgements by win-probability lost on the move
+const JUDGEMENTS = [
+  { min: 0.3, kind: 'blunder', plural: 'blunders', glyph: '??', color: '#df5353' },
+  { min: 0.2, kind: 'mistake', plural: 'mistakes', glyph: '?', color: '#e69f00' },
+  { min: 0.1, kind: 'inaccuracy', plural: 'inaccuracies', glyph: '?!', color: '#56b4e9' },
+];
+
+let analysis = null; // {fens, moves, fracs, labels, marks, viewPly} while reviewing
+
+// white win probability 0..1 (same sigmoid as the eval bar)
+function whiteWinFrac(score, stm) {
+  const sign = stm === 'w' ? 1 : -1;
+  if (score.kind === 'mate') return sign * score.val > 0 ? 1 : 0;
+  return 1 / (1 + Math.exp(-0.00368208 * sign * score.val));
+}
+
+function scoreLabel(score, stm) {
+  const sign = stm === 'w' ? 1 : -1;
+  if (score.kind === 'mate') return `#${Math.abs(score.val)}`;
+  const cp = sign * score.val;
+  return (cp >= 0 ? '+' : '−') + Math.abs(cp / 100).toFixed(1);
+}
+
+async function analyseGame() {
+  const moves = chess.history({ verbose: true });
+  if (moves.length < 2) return;
+  const id = searchId;
+  analysis = {
+    fens: [moves[0].before, ...moves.map((m) => m.after)],
+    moves,
+    fracs: [],
+    labels: [],
+    marks: [],
+    viewPly: moves.length,
+  };
+  analysisEl.classList.remove('hidden');
+  for (let i = 0; i < analysis.fens.length; i++) {
+    summaryEl.textContent = `Analysing… ${i + 1}/${analysis.fens.length}`;
+    // the last position carries the real result (incl. repetition draws the
+    // engine can't see from a lone FEN); earlier ones are engine-evaluated
+    const pos = i === analysis.fens.length - 1 ? chess : new Chess(analysis.fens[i]);
+    if (pos.isCheckmate()) {
+      analysis.fracs.push(pos.turn() === 'w' ? 0 : 1);
+      analysis.labels.push(pos.turn() === 'w' ? '0-1' : '1-0');
+    } else if (pos.isGameOver()) {
+      analysis.fracs.push(0.5);
+      analysis.labels.push('½');
+    } else {
+      const { score } = await engine.search(analysis.fens[i], 180, { full: true });
+      if (id !== searchId) return; // a new game started — abandon the review
+      const stm = analysis.fens[i].split(' ')[1];
+      analysis.fracs.push(score ? whiteWinFrac(score, stm) : 0.5);
+      analysis.labels.push(score ? scoreLabel(score, stm) : '?');
+    }
+    drawGraph();
+  }
+  analysis.marks = analysis.moves.map((m, i) => {
+    const loss = m.color === 'w'
+      ? analysis.fracs[i] - analysis.fracs[i + 1]
+      : analysis.fracs[i + 1] - analysis.fracs[i];
+    return JUDGEMENTS.find((j) => loss >= j.min) || null;
+  });
+  drawGraph();
+  renderSummary();
+}
+
+function moveLabel(i) {
+  const m = analysis.moves[i];
+  const num = m.before.split(' ')[5];
+  return `${num}${m.color === 'w' ? '.' : '…'} ${m.san}`;
+}
+
+function drawGraph() {
+  if (!analysis) return;
+  const n = analysis.fens.length - 1;
+  const px = (i) => ((i / n) * GRAPH_W).toFixed(1);
+  const py = (f) => ((1 - f) * GRAPH_H).toFixed(1);
+  const parts = [];
+  // white's share of win probability, filled from the bottom like the eval bar
+  if (analysis.fracs.length > 1) {
+    const pts = analysis.fracs.map((f, i) => `${px(i)} ${py(f)}`);
+    parts.push(`<path d="M 0 ${GRAPH_H} L ${pts.join(' L ')} L ${px(analysis.fracs.length - 1)} ${GRAPH_H} Z" fill="#f5f3f0"/>`);
+  }
+  parts.push(`<line x1="0" y1="${GRAPH_H / 2}" x2="${GRAPH_W}" y2="${GRAPH_H / 2}" stroke="rgba(128,128,128,0.55)" stroke-dasharray="3 3"/>`);
+  parts.push(`<line x1="${px(analysis.viewPly)}" y1="0" x2="${px(analysis.viewPly)}" y2="${GRAPH_H}" stroke="#629924" stroke-width="1.5"/>`);
+  analysis.marks.forEach((mark, i) => {
+    if (!mark) return;
+    parts.push(`<circle cx="${px(i + 1)}" cy="${py(analysis.fracs[i + 1])}" r="3.5" fill="${mark.color}" stroke="#403d39"><title>${moveLabel(i)}${mark.glyph} (${mark.kind})</title></circle>`);
+  });
+  graphEl.innerHTML = parts.join('');
+}
+
+function renderSummary() {
+  const counts = { blunder: 0, mistake: 0, inaccuracy: 0 };
+  for (const m of analysis.marks) if (m) counts[m.kind]++;
+  summaryEl.innerHTML = JUDGEMENTS
+    .map((j) => `<b style="color:${j.color}">${counts[j.kind]}</b> ${counts[j.kind] === 1 ? j.kind : j.plural}`)
+    .join(' · ') + ' — click the graph or use ←/→ to review';
+}
+
+// show a past position on the board without touching game state
+function gotoPly(ply) {
+  if (!analysis) return;
+  analysis.viewPly = ply;
+  const pos = new Chess(analysis.fens[ply]);
+  const mv = ply > 0 ? analysis.moves[ply - 1] : null;
+  ground.set({
+    fen: analysis.fens[ply],
+    turnColor: fullColor(pos.turn()),
+    check: pos.inCheck(),
+    lastMove: mv ? [mv.from, mv.to] : undefined,
+    movable: { color: undefined },
+  });
+  if (analysis.fracs[ply] != null) {
+    evalFill.style.height = `${(analysis.fracs[ply] * 100).toFixed(1)}%`;
+    evalNum.textContent = analysis.labels[ply];
+  }
+  drawGraph();
+}
+
+function clearAnalysis() {
+  analysis = null;
+  analysisEl.classList.add('hidden');
+  graphEl.innerHTML = '';
+  summaryEl.textContent = '';
+}
+
+graphEl.addEventListener('click', (e) => {
+  if (!analysis) return;
+  const rect = graphEl.getBoundingClientRect();
+  const n = analysis.fens.length - 1;
+  const ply = Math.round(((e.clientX - rect.left) / rect.width) * n);
+  gotoPly(Math.min(Math.max(ply, 0), n));
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!analysis) return;
+  if (e.target && /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
+  if (e.key === 'ArrowLeft') gotoPly(Math.max(0, analysis.viewPly - 1));
+  else if (e.key === 'ArrowRight') gotoPly(Math.min(analysis.fens.length - 1, analysis.viewPly + 1));
+  else return;
+  e.preventDefault();
+});
 
 // --- Sounds (lichess standard set) -------------------------------------------
 
@@ -207,7 +359,10 @@ function sync(lastMove) {
   });
   renderMoves();
   renderStatus();
-  if (chess.isGameOver()) setEvalTerminal();
+  if (chess.isGameOver()) {
+    setEvalTerminal();
+    if (!analysis) analyseGame();
+  }
   undoBtn.disabled = thinking || chess.isGameOver() || chess.history().length < minHistoryForUndo;
 }
 
@@ -366,6 +521,7 @@ function startTrainer(p) {
 function begin() {
   searchId++;
   thinking = false;
+  clearAnalysis();
   engine.newGame();
   engine.setElo(Number(eloInput.value));
   ground.set({ orientation: playerColor, lastMove: undefined });
@@ -445,4 +601,4 @@ await engine.init();
 newGame();
 
 // Console/debug handle
-window.game = { chess, engine, move: applyUserMove, newGame, sounds, hint, startTrainer };
+window.game = { chess, engine, move: applyUserMove, newGame, sounds, hint, startTrainer, gotoPly };

@@ -29,6 +29,11 @@ python3 -m http.server 8123
 - Eval bar — score lines from engine searches, mapped to win probability
   (lichess's sigmoid); fresh games and undos get a quick full-strength eval,
   mates show `#N`, finished games show `1-0` / `0-1` / `½`
+- Post-game analysis graph — when a game ends, every position is re-evaluated
+  at full strength and drawn as a win-probability chart (lichess-style).
+  Moves that lose ≥10/20/30% win probability are marked as
+  inaccuracies / mistakes / blunders; click the graph or use ←/→ to step
+  through the game on the board.
 - Endgame trainer: 270 positions from
   [melvincarvalho/endgames](https://github.com/melvincarvalho/endgames), each
   with a goal (convert the win / hold the draw). The engine defends at full
