@@ -57,13 +57,22 @@ class Engine {
   }
 
   // full=true searches at full strength (hints, evals).
-  // Returns {move, score} — score is {kind: 'cp'|'mate', val} from the
-  // side-to-move's point of view, from the deepest info line seen.
-  search(fen, movetimeMs, { full = false } = {}) {
+  // pvs>1 also collects the engine's top-N candidate moves (MultiPV).
+  // Returns {move, score, lines} — score is {kind: 'cp'|'mate', val} from the
+  // side-to-move's point of view, from the deepest info line seen; lines[i]
+  // is {move, score} for the (i+1)-th best candidate when pvs > 1.
+  search(fen, movetimeMs, { full = false, pvs = 1 } = {}) {
     const run = async () => {
       this.send(`setoption name UCI_LimitStrength value ${full ? 'false' : 'true'}`);
+      if (pvs > 1) this.send(`setoption name MultiPV value ${pvs}`);
       let score = null;
+      const lines = [];
       const detach = this.listen((line) => {
+        const pv = line.match(/^info .*\bmultipv (\d+) .*\bscore (cp|mate) (-?\d+).*\bpv (\S+)/);
+        if (pv) {
+          lines[Number(pv[1]) - 1] = { move: pv[4], score: { kind: pv[2], val: Number(pv[3]) } };
+          return;
+        }
         const m = line.match(/^info .*\bscore (cp|mate) (-?\d+)/);
         if (m) score = { kind: m[1], val: Number(m[2]) };
       });
@@ -72,7 +81,8 @@ class Engine {
       this.send(`go movetime ${movetimeMs}`);
       const move = (await done)[1];
       detach();
-      return { move, score };
+      if (pvs > 1) this.send('setoption name MultiPV value 1');
+      return { move, score: lines[0] ? lines[0].score : score, lines };
     };
     const p = this.queue.then(run);
     this.queue = p.catch(() => {});
@@ -161,11 +171,15 @@ const JUDGEMENTS = [
 
 let analysis = null; // {fens, moves, fracs, labels, marks, viewPly} while reviewing
 
-// white win probability 0..1 (same sigmoid as the eval bar)
+// win probability 0..1 for the side to move (same sigmoid as the eval bar)
+function moverWinFrac(score) {
+  if (score.kind === 'mate') return score.val > 0 ? 1 : 0;
+  return 1 / (1 + Math.exp(-0.00368208 * score.val));
+}
+
+// same, from White's point of view
 function whiteWinFrac(score, stm) {
-  const sign = stm === 'w' ? 1 : -1;
-  if (score.kind === 'mate') return sign * score.val > 0 ? 1 : 0;
-  return 1 / (1 + Math.exp(-0.00368208 * sign * score.val));
+  return stm === 'w' ? moverWinFrac(score) : 1 - moverWinFrac(score);
 }
 
 function scoreLabel(score, stm) {
@@ -436,17 +450,48 @@ function onUserMove(orig, dest) {
   applyUserMove(orig, dest);
 }
 
+// SAN for a uci move in the current position (for hint text)
+function sanFor(uci) {
+  const c = new Chess(chess.fen());
+  return c.move({
+    from: uci.slice(0, 2),
+    to: uci.slice(2, 4),
+    promotion: uci.length > 4 ? uci[4] : undefined,
+  }).san;
+}
+
 async function hint() {
   if (thinking || chess.isGameOver()) return;
   hintBtn.disabled = true;
   hintBtn.textContent = 'Thinking…';
   const fenAtRequest = chess.fen();
-  const { move: uci, score } = await engine.search(fenAtRequest, 600, { full: true });
+  // MultiPV halves effective depth, so give the hint search more time
+  const { score, lines } = await engine.search(fenAtRequest, 1000, { full: true, pvs: 2 });
   hintBtn.disabled = false;
   hintBtn.textContent = 'Get a hint';
   if (chess.fen() !== fenAtRequest) return; // position changed meanwhile
-  setEval(score, fenAtRequest.split(' ')[1]);
-  ground.setAutoShapes([{ orig: uci.slice(0, 2), dest: uci.slice(2, 4), brush: 'green' }]);
+  const stm = fenAtRequest.split(' ')[1];
+  setEval(score, stm);
+  const [best, second] = lines;
+  if (!best) return;
+  const arrow = (l, brush) => ({
+    orig: l.move.slice(0, 2),
+    dest: l.move.slice(2, 4),
+    brush,
+    label: { text: scoreLabel(l.score, stm) },
+  });
+  const shapes = [arrow(best, 'green')];
+  let secondNote = '';
+  if (second) {
+    // grade the runner-up by win probability given away, in the same
+    // colour language as the analysis graph
+    const gap = moverWinFrac(best.score) - moverWinFrac(second.score);
+    const brush = gap < 0.05 ? 'blue' : gap < 0.15 ? 'yellow' : 'red';
+    shapes.push(arrow(second, brush));
+    secondNote = ` · 2nd: ${sanFor(second.move)} ${scoreLabel(second.score, stm)} (${Math.round(gap * 100)}% worse)`;
+  }
+  ground.setAutoShapes(shapes);
+  statusEl.textContent = `Best: ${sanFor(best.move)} ${scoreLabel(best.score, stm)}${secondNote}`;
 }
 
 function applyUserMove(orig, dest, promotion) {

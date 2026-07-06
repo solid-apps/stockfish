@@ -24,8 +24,11 @@ python3 -m http.server 8123
 - Checkmate / stalemate / draw detection (chess.js)
 - Sounds from lichess's standard set (move, capture, game end) with a
   persistent mute toggle
-- "Get a hint" — a full-strength engine search on your position, shown as a
-  green arrow (works even when the opponent is strength-limited)
+- "Get a hint" — a full-strength MultiPV search shows the best move as a
+  green arrow and the runner-up as a second arrow coloured by how much
+  win probability it gives away (blue &lt;5%, yellow &lt;15%, red beyond),
+  each labelled with its eval; the status line spells out the comparison
+  (works even when the opponent is strength-limited)
 - Eval bar — score lines from engine searches, mapped to win probability
   (lichess's sigmoid); fresh games and undos get a quick full-strength eval,
   mates show `#N`, finished games show `1-0` / `0-1` / `½`
