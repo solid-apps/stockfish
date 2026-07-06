@@ -12,11 +12,16 @@
 </head>
 <body>
   <main>
+    <div class="play-area">
     <div class="eval-col">
       <div id="eval-bar"><div id="eval-white"></div></div>
       <div id="eval-num">0.0</div>
     </div>
     <div class="board-col">
+      <div class="buttons board-actions">
+        <button id="hint">Get a hint</button>
+        <button id="undo">Undo</button>
+      </div>
       <div id="board" class="cg-wrap"></div>
       <div id="promo-overlay" class="hidden">
         <div class="promo-box">
@@ -30,6 +35,7 @@
         <svg id="graph" viewBox="0 0 560 90" preserveAspectRatio="none"></svg>
         <p id="analysis-summary"></p>
       </div>
+    </div>
     </div>
 
     <aside class="panel">
@@ -56,11 +62,7 @@
           <input id="elo" type="range" min="1320" max="3190" step="10" value="1600">
         </label>
         <div class="buttons">
-          <button id="hint">Get a hint</button>
-        </div>
-        <div class="buttons">
           <button id="new-game">New game</button>
-          <button id="undo">Undo</button>
           <button id="flip">Flip board</button>
           <button id="mute" title="Toggle sound">🔊</button>
         </div>
