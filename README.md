@@ -37,6 +37,12 @@ python3 -m http.server 8123
   Moves that lose ≥10/20/30% win probability are marked as
   inaccuracies / mistakes / blunders; click the graph or use ←/→ to step
   through the game on the board.
+- Shareable games — finished games write themselves into the URL as standard
+  PGN (`?pgn=…`), and a small box at the bottom of the panel accepts any
+  pasted PGN. Opening a link (or pasting) replays the game and runs the
+  analysis graph, even for unfinished games; games from custom positions
+  round-trip via PGN's `[FEN]` header, and you can keep playing against the
+  engine from where a loaded game left off.
 - Endgame trainer: 270 positions from
   [melvincarvalho/endgames](https://github.com/melvincarvalho/endgames), each
   with a goal (convert the win / hold the draw). The engine defends at full

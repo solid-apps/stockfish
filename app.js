@@ -112,6 +112,7 @@ const promoOverlay = document.getElementById('promo-overlay');
 const trainerSelect = document.getElementById('trainer-select');
 const evalFill = document.getElementById('eval-white');
 const evalNum = document.getElementById('eval-num');
+const pgnInput = document.getElementById('pgn-input');
 const analysisEl = document.getElementById('analysis');
 const graphEl = document.getElementById('graph');
 const summaryEl = document.getElementById('analysis-summary');
@@ -190,10 +191,11 @@ function scoreLabel(score, stm) {
 }
 
 async function analyseGame() {
+  if (analysis) return; // already reviewing this game
   const moves = chess.history({ verbose: true });
   if (moves.length < 2) return;
   const id = searchId;
-  analysis = {
+  const a = analysis = {
     fens: [moves[0].before, ...moves.map((m) => m.after)],
     moves,
     fracs: [],
@@ -202,34 +204,38 @@ async function analyseGame() {
     viewPly: moves.length,
   };
   analysisEl.classList.remove('hidden');
-  for (let i = 0; i < analysis.fens.length; i++) {
-    summaryEl.textContent = `Analysing… ${i + 1}/${analysis.fens.length}`;
-    // the last position carries the real result (incl. repetition draws the
-    // engine can't see from a lone FEN); earlier ones are engine-evaluated
-    const pos = i === analysis.fens.length - 1 ? chess : new Chess(analysis.fens[i]);
+  const finished = chess.isGameOver();
+  for (let i = 0; i < a.fens.length; i++) {
+    summaryEl.textContent = `Analysing… ${i + 1}/${a.fens.length}`;
+    // a finished game's last position carries the real result (incl.
+    // repetition draws the engine can't see from a lone FEN); everything
+    // else is engine-evaluated
+    const pos = finished && i === a.fens.length - 1 ? chess : new Chess(a.fens[i]);
     if (pos.isCheckmate()) {
-      analysis.fracs.push(pos.turn() === 'w' ? 0 : 1);
-      analysis.labels.push(pos.turn() === 'w' ? '0-1' : '1-0');
+      a.fracs.push(pos.turn() === 'w' ? 0 : 1);
+      a.labels.push(pos.turn() === 'w' ? '0-1' : '1-0');
     } else if (pos.isGameOver()) {
-      analysis.fracs.push(0.5);
-      analysis.labels.push('½');
+      a.fracs.push(0.5);
+      a.labels.push('½');
     } else {
-      const { score } = await engine.search(analysis.fens[i], 180, { full: true });
-      if (id !== searchId) return; // a new game started — abandon the review
-      const stm = analysis.fens[i].split(' ')[1];
-      analysis.fracs.push(score ? whiteWinFrac(score, stm) : 0.5);
-      analysis.labels.push(score ? scoreLabel(score, stm) : '?');
+      const { score } = await engine.search(a.fens[i], 180, { full: true });
+      // a new game started or play continued — abandon the review
+      if (id !== searchId || analysis !== a) return;
+      const stm = a.fens[i].split(' ')[1];
+      a.fracs.push(score ? whiteWinFrac(score, stm) : 0.5);
+      a.labels.push(score ? scoreLabel(score, stm) : '?');
     }
     drawGraph();
   }
-  analysis.marks = analysis.moves.map((m, i) => {
+  a.marks = a.moves.map((m, i) => {
     const loss = m.color === 'w'
-      ? analysis.fracs[i] - analysis.fracs[i + 1]
-      : analysis.fracs[i + 1] - analysis.fracs[i];
+      ? a.fracs[i] - a.fracs[i + 1]
+      : a.fracs[i + 1] - a.fracs[i];
     return JUDGEMENTS.find((j) => loss >= j.min) || null;
   });
   drawGraph();
   renderSummary();
+  setBarFromAnalysis(a.viewPly);
 }
 
 function moveLabel(i) {
@@ -272,18 +278,23 @@ function gotoPly(ply) {
   analysis.viewPly = ply;
   const pos = new Chess(analysis.fens[ply]);
   const mv = ply > 0 ? analysis.moves[ply - 1] : null;
+  // at the final ply of an unfinished (loaded) game, play can continue
+  const atLiveEnd = ply === analysis.fens.length - 1 && !chess.isGameOver();
   ground.set({
     fen: analysis.fens[ply],
     turnColor: fullColor(pos.turn()),
     check: pos.inCheck(),
     lastMove: mv ? [mv.from, mv.to] : undefined,
-    movable: { color: undefined },
+    movable: atLiveEnd ? { color: playerColor, dests: toDests() } : { color: undefined },
   });
-  if (analysis.fracs[ply] != null) {
-    evalFill.style.height = `${(analysis.fracs[ply] * 100).toFixed(1)}%`;
-    evalNum.textContent = analysis.labels[ply];
-  }
+  setBarFromAnalysis(ply);
   drawGraph();
+}
+
+function setBarFromAnalysis(ply) {
+  if (analysis.fracs[ply] == null) return;
+  evalFill.style.height = `${(analysis.fracs[ply] * 100).toFixed(1)}%`;
+  evalNum.textContent = analysis.labels[ply];
 }
 
 function clearAnalysis() {
@@ -375,7 +386,10 @@ function sync(lastMove) {
   renderStatus();
   if (chess.isGameOver()) {
     setEvalTerminal();
-    if (!analysis) analyseGame();
+    if (!analysis) {
+      updatePermalink(); // finished games are shareable straight from the URL bar
+      analyseGame();
+    }
   }
   undoBtn.disabled = thinking || chess.isGameOver() || chess.history().length < minHistoryForUndo;
 }
@@ -503,6 +517,7 @@ function applyUserMove(orig, dest, promotion) {
     return;
   }
   ground.setAutoShapes([]);
+  if (analysis) clearAnalysis(); // continuing a loaded game ends its review
   soundForMove(move);
   sync([orig, dest]);
   if (!chess.isGameOver()) engineMove();
@@ -543,6 +558,63 @@ function askPromotion() {
   });
 }
 
+// --- Sharing games as ?pgn= links ---------------------------------------------
+
+// PGN for the current game with the boilerplate seven-tag roster stripped;
+// SetUp/FEN headers are kept so games from custom positions round-trip
+function gamePgn() {
+  return chess.pgn()
+    .split('\n')
+    .filter((l) => !/^\[(?!SetUp|FEN)/.test(l))
+    .join('\n')
+    .trim();
+}
+
+function updatePermalink() {
+  history.replaceState(null, '', `?pgn=${encodeURIComponent(gamePgn())}`);
+}
+
+// Replace the current game with a pasted/linked one and review it.
+// Returns false (leaving the app untouched) if the PGN doesn't parse.
+function loadGameFromPgn(text) {
+  const loaded = new Chess();
+  try {
+    loaded.loadPgn(text.trim());
+  } catch {
+    return false;
+  }
+  if (loaded.history().length < 2) return false;
+  trainer = null;
+  trainerSelect.value = '';
+  searchId++;
+  thinking = false;
+  clearAnalysis();
+  engine.newGame();
+  engine.setElo(Number(eloInput.value));
+  chess.loadPgn(loaded.pgn());
+  playerColor = fullColor(chess.turn()); // if unfinished, you continue as the side to move
+  ground.set({ orientation: playerColor });
+  ground.cancelPremove();
+  ground.setAutoShapes([]);
+  minHistoryForUndo = chess.history().length + 2; // undo only moves made after loading
+  const last = chess.history({ verbose: true }).at(-1);
+  sync([last.from, last.to]);
+  updatePermalink();
+  analyseGame(); // review even when the game isn't finished
+  return true;
+}
+
+pgnInput.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  if (loadGameFromPgn(pgnInput.value)) {
+    pgnInput.value = '';
+    pgnInput.blur();
+  } else {
+    pgnInput.classList.add('invalid');
+    setTimeout(() => pgnInput.classList.remove('invalid'), 800);
+  }
+});
+
 // --- Controls ---------------------------------------------------------------
 
 let minHistoryForUndo = 2; // +1 when the engine moved first in this game
@@ -567,6 +639,7 @@ function begin() {
   searchId++;
   thinking = false;
   clearAnalysis();
+  history.replaceState(null, '', location.pathname); // fresh game, fresh URL
   engine.newGame();
   engine.setElo(Number(eloInput.value));
   ground.set({ orientation: playerColor, lastMove: undefined });
@@ -643,7 +716,8 @@ eloInput.addEventListener('input', () => {
 statusEl.textContent = 'Loading engine…';
 loadPositions(); // in parallel with engine init
 await engine.init();
-newGame();
+const linkedPgn = new URLSearchParams(location.search).get('pgn');
+if (!linkedPgn || !loadGameFromPgn(linkedPgn)) newGame();
 
 // Console/debug handle
-window.game = { chess, engine, move: applyUserMove, newGame, sounds, hint, startTrainer, gotoPly };
+window.game = { chess, engine, move: applyUserMove, newGame, sounds, hint, startTrainer, gotoPly, loadGame: loadGameFromPgn };
