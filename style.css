@@ -214,6 +214,19 @@ h1 {
   color: #333;
 }
 
+#moves.analysed .san {
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#moves.analysed .san:hover {
+  background: rgba(98, 153, 36, 0.12);
+}
+
+#moves .san.current {
+  background: rgba(98, 153, 36, 0.22);
+}
+
 /* narrow screens: shrink the board so it fits beside the eval bar
    (16px bar + 8px gap + 12px padding each side = 48px) */
 @media (max-width: 740px) {

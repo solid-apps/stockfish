@@ -200,6 +200,7 @@ async function analyseGame() {
     moves,
     fracs: [],
     labels: [],
+    best: [], // engine's preferred move per position (uci), null at terminal ones
     marks: [],
     viewPly: moves.length,
   };
@@ -214,16 +215,19 @@ async function analyseGame() {
     if (pos.isCheckmate()) {
       a.fracs.push(pos.turn() === 'w' ? 0 : 1);
       a.labels.push(pos.turn() === 'w' ? '0-1' : '1-0');
+      a.best.push(null);
     } else if (pos.isGameOver()) {
       a.fracs.push(0.5);
       a.labels.push('½');
+      a.best.push(null);
     } else {
-      const { score } = await engine.search(a.fens[i], 180, { full: true });
+      const { move, score } = await engine.search(a.fens[i], 180, { full: true });
       // a new game started or play continued — abandon the review
       if (id !== searchId || analysis !== a) return;
       const stm = a.fens[i].split(' ')[1];
       a.fracs.push(score ? whiteWinFrac(score, stm) : 0.5);
       a.labels.push(score ? scoreLabel(score, stm) : '?');
+      a.best.push(move);
     }
     drawGraph();
   }
@@ -236,6 +240,7 @@ async function analyseGame() {
   drawGraph();
   renderSummary();
   setBarFromAnalysis(a.viewPly);
+  renderMoves(); // move list gains glyphs and becomes clickable
 }
 
 function moveLabel(i) {
@@ -264,12 +269,30 @@ function drawGraph() {
   graphEl.innerHTML = parts.join('');
 }
 
+// lichess's accuracy curve — 100 for perfect moves, decaying with win% lost
+function accuracy(color) {
+  const accs = analysis.moves
+    .map((m, i) => {
+      if (m.color !== color) return null;
+      const lost = color === 'w'
+        ? analysis.fracs[i] - analysis.fracs[i + 1]
+        : analysis.fracs[i + 1] - analysis.fracs[i];
+      const d = Math.max(0, lost * 100);
+      return Math.min(100, Math.max(0, 103.1668 * Math.exp(-0.04354 * d) - 3.1669));
+    })
+    .filter((v) => v !== null);
+  return accs.length ? Math.round(accs.reduce((x, y) => x + y, 0) / accs.length) : 100;
+}
+
 function renderSummary() {
   const counts = { blunder: 0, mistake: 0, inaccuracy: 0 };
   for (const m of analysis.marks) if (m) counts[m.kind]++;
-  summaryEl.innerHTML = JUDGEMENTS
+  const judged = JUDGEMENTS
     .map((j) => `<b style="color:${j.color}">${counts[j.kind]}</b> ${counts[j.kind] === 1 ? j.kind : j.plural}`)
-    .join(' · ') + ' — click the graph or use ←/→ to review';
+    .join(' · ');
+  summaryEl.innerHTML =
+    `Accuracy: White <b>${accuracy('w')}%</b> · Black <b>${accuracy('b')}%</b> — ${judged}` +
+    ' — click a move or the graph, or use ←/→';
 }
 
 // show a past position on the board without touching game state
@@ -288,6 +311,12 @@ function gotoPly(ply) {
     movable: atLiveEnd ? { color: playerColor, dests: toDests() } : { color: undefined },
   });
   setBarFromAnalysis(ply);
+  // show what the engine would have played here
+  const best = analysis.best[ply];
+  ground.setAutoShapes(best
+    ? [{ orig: best.slice(0, 2), dest: best.slice(2, 4), brush: 'green' }]
+    : []);
+  renderMoves(); // move the highlight in the move list
   drawGraph();
 }
 
@@ -303,6 +332,12 @@ function clearAnalysis() {
   graphEl.innerHTML = '';
   summaryEl.textContent = '';
 }
+
+movesEl.addEventListener('click', (e) => {
+  if (!analysis) return;
+  const s = e.target.closest('.san');
+  if (s && s.dataset.ply) gotoPly(Number(s.dataset.ply));
+});
 
 graphEl.addEventListener('click', (e) => {
   if (!analysis) return;
@@ -397,22 +432,30 @@ function sync(lastMove) {
 function renderMoves() {
   const history = chess.history();
   movesEl.innerHTML = '';
+  if (analysis) movesEl.classList.add('analysed');
+  else movesEl.classList.remove('analysed');
   for (let i = 0; i < history.length; i += 2) {
     const li = document.createElement('li');
     const num = document.createElement('span');
     num.className = 'num';
     num.textContent = `${i / 2 + 1}.`;
     li.appendChild(num);
-    for (const san of [history[i], history[i + 1]]) {
+    for (const j of [i, i + 1]) {
+      const san = history[j];
       if (!san) continue;
       const s = document.createElement('span');
       s.className = 'san';
-      s.textContent = san;
+      s.dataset.ply = j + 1;
+      const mark = analysis && analysis.marks[j];
+      s.textContent = mark ? san + mark.glyph : san;
+      if (mark) s.style.color = mark.color;
+      if (analysis && analysis.viewPly === j + 1) s.classList.add('current');
       li.appendChild(s);
     }
     movesEl.appendChild(li);
   }
-  movesEl.scrollTop = movesEl.scrollHeight;
+  // during play, follow the latest move; during review, stay where the user is
+  if (!analysis) movesEl.scrollTop = movesEl.scrollHeight;
 }
 
 function trainerGoalText() {

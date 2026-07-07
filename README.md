@@ -1,9 +1,13 @@
 # Play Stockfish
 
+**Analyse your games with no account, no upload, and no record.**
+
 A lichess-style web chess game against Stockfish 18, running entirely in the
 browser — no backend. The engine is the official Stockfish WASM build (lite,
 single-threaded) executing in a Web Worker, so the whole thing is static files
-and can be hosted on GitHub Pages.
+and can be hosted on GitHub Pages. Games you paste or play never leave your
+machine: the engine runs locally, shared games travel as plain PGN in the URL,
+and nothing is stored anywhere.
 
 ## Run locally
 
@@ -35,8 +39,11 @@ python3 -m http.server 8123
 - Post-game analysis graph — when a game ends, every position is re-evaluated
   at full strength and drawn as a win-probability chart (lichess-style).
   Moves that lose ≥10/20/30% win probability are marked as
-  inaccuracies / mistakes / blunders; click the graph or use ←/→ to step
-  through the game on the board.
+  inaccuracies / mistakes / blunders; click the graph, click a move in the
+  move list, or use ←/→ to step through the game on the board.
+- Full review: per-player accuracy scores (lichess's formula), `?!`/`?`/`??`
+  glyphs on the marked moves in the move list, and a green best-move arrow
+  on every reviewed position showing what the engine would have played.
 - Shareable games — finished games write themselves into the URL as standard
   PGN (`?pgn=…`), and a small box at the bottom of the panel accepts any
   pasted PGN. Opening a link (or pasting) replays the game and runs the
