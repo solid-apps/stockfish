@@ -579,7 +579,9 @@ function updatePermalink() {
 function loadGameFromPgn(text) {
   const loaded = new Chess();
   try {
-    loaded.loadPgn(text.trim());
+    // strip {comments}: we re-analyse anyway, and chess.js chokes on the
+    // consecutive comments lichess emits (draw offers, "The game is a draw.")
+    loaded.loadPgn(text.replace(/\{[^}]*\}/g, ' ').trim());
   } catch {
     return false;
   }
