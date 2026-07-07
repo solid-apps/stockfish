@@ -1,7 +1,7 @@
 {
-  "name": "stockfish-web",
+  "name": "quiet-chess",
   "version": "1.0.0",
-  "description": "Play Stockfish in the browser — lichess-style board, engine in WASM, endgame trainer. Fully static, no backend.",
+  "description": "Quiet Chess — play Stockfish and analyse games entirely in your browser. No account, no upload, no record. Fully static, no backend.",
   "homepage": "https://solid-apps.github.io/stockfish/",
   "repository": {
     "type": "git",

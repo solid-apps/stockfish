@@ -1,6 +1,8 @@
-# Play Stockfish
+# Quiet Chess
 
 **Analyse your games with no account, no upload, and no record.**
+
+*(A "quiet move" improves your position without fanfare. So does this app.)*
 
 A lichess-style web chess game against Stockfish 18, running entirely in the
 browser — no backend. The engine is the official Stockfish WASM build (lite,
@@ -98,3 +100,19 @@ Sound files in `sounds/` are the "standard" sound set from
 (AGPL-3.0). In that set the check sound is silence and the victory/defeat/draw
 sounds all alias `GenericNotify`, so only `Move`, `Capture`, and
 `GenericNotify` are vendored.
+
+## Credits and licences
+
+This app is [GPL-3.0](LICENSE). It stands on excellent open-source work:
+
+| Component | Author / project | Licence |
+|---|---|---|
+| [Stockfish](https://github.com/official-stockfish/Stockfish) 18 (official WASM build via [stockfish npm](https://www.npmjs.com/package/stockfish)) | The Stockfish developers | GPL-3.0 |
+| [chessground](https://github.com/lichess-org/chessground) board UI | lichess.org | GPL-3.0 |
+| [chess.js](https://github.com/jhlywa/chess.js) rules engine | Jeff Hlywa | BSD-2-Clause |
+| cburnett piece set (via chessground assets) | [Colin M.L. Burnett](https://en.wikipedia.org/wiki/User:Cburnett) | CC-BY-SA 3.0 / GFDL |
+| Board sounds (standard set) | [lichess-org/lila](https://github.com/lichess-org/lila) | AGPL-3.0 |
+| Endgame positions | [melvincarvalho/endgames](https://github.com/melvincarvalho/endgames) | see repo |
+
+The win-probability sigmoid, judgement thresholds (inaccuracy / mistake /
+blunder), and accuracy formula follow lichess's published approach.
