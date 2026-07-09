@@ -52,6 +52,11 @@ python3 -m http.server 8123
   analysis graph, even for unfinished games; games from custom positions
   round-trip via PGN's `[FEN]` header, and you can keep playing against the
   engine from where a loaded game left off.
+- Position links — "Copy position link" puts the current position (or the one
+  you're reviewing) in the URL as `?fen=…` and copies the link. Bookmark it
+  like an opening-trainer card: opening the link drops you straight into the
+  position against the engine, playing the side to move, and "New game"
+  retries it. No storage anywhere — the URL is the save file.
 - Endgame trainer: 270 positions from
   [melvincarvalho/endgames](https://github.com/melvincarvalho/endgames), each
   with a goal (convert the win / hold the draw). The engine defends at full

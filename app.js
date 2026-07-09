@@ -630,6 +630,7 @@ function loadGameFromPgn(text) {
   }
   if (loaded.history().length < 2) return false;
   trainer = null;
+  startFen = null;
   trainerSelect.value = '';
   searchId++;
   thinking = false;
@@ -649,6 +650,25 @@ function loadGameFromPgn(text) {
   return true;
 }
 
+const savePosBtn = document.getElementById('save-pos');
+
+// Put the current (or currently reviewed) position in the URL and copy the
+// link — the URL is the save file: bookmark it, open it later, drill it.
+async function savePositionLink() {
+  const fen = analysis ? analysis.fens[analysis.viewPly] : chess.fen();
+  history.replaceState(null, '', `?fen=${encodeURIComponent(fen)}`);
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(location.href);
+    copied = true;
+  } catch { /* clipboard unavailable — the URL bar still has the link */ }
+  savePosBtn.textContent = copied ? 'Link copied ✓' : 'Link in URL bar ✓';
+  setTimeout(() => { savePosBtn.textContent = 'Copy position link'; }, 1500);
+  return fen;
+}
+
+savePosBtn.addEventListener('click', savePositionLink);
+
 pgnInput.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
   if (loadGameFromPgn(pgnInput.value)) {
@@ -664,9 +684,13 @@ pgnInput.addEventListener('keydown', (e) => {
 
 let minHistoryForUndo = 2; // +1 when the engine moved first in this game
 
+let startFen = null; // set when playing from a ?fen= position link
+
 function startFreePlay() {
   trainer = null;
+  startFen = null;
   trainerSelect.value = '';
+  history.replaceState(null, '', location.pathname); // fresh game, fresh URL
   chess.reset();
   const choice = colorSelect.value;
   playerColor = choice === 'random' ? (Math.random() < 0.5 ? 'white' : 'black') : choice;
@@ -675,16 +699,34 @@ function startFreePlay() {
 
 function startTrainer(p) {
   trainer = p;
+  startFen = null;
+  history.replaceState(null, '', location.pathname);
   chess.load(p.fen);
   playerColor = fullColor(p.playerSide);
   begin();
+}
+
+// play from a bare position (a ?fen= link); "New game" retries it
+function startFromFen(fen) {
+  try {
+    new Chess(fen); // validate
+  } catch {
+    return false;
+  }
+  trainer = null;
+  trainerSelect.value = '';
+  startFen = fen;
+  chess.load(fen);
+  playerColor = fullColor(chess.turn()); // you play the side to move
+  begin();
+  history.replaceState(null, '', `?fen=${encodeURIComponent(fen)}`);
+  return true;
 }
 
 function begin() {
   searchId++;
   thinking = false;
   clearAnalysis();
-  history.replaceState(null, '', location.pathname); // fresh game, fresh URL
   engine.newGame();
   engine.setElo(Number(eloInput.value));
   ground.set({ orientation: playerColor, lastMove: undefined });
@@ -697,9 +739,10 @@ function begin() {
   else evalCurrent();
 }
 
-// in trainer mode "New game" retries the current position
+// in trainer / position-link mode "New game" retries the current position
 function newGame() {
   if (trainer) startTrainer(trainer);
+  else if (startFen) startFromFen(startFen);
   else startFreePlay();
 }
 
@@ -761,8 +804,17 @@ eloInput.addEventListener('input', () => {
 statusEl.textContent = 'Loading engine…';
 loadPositions(); // in parallel with engine init
 await engine.init();
-const linkedPgn = new URLSearchParams(location.search).get('pgn');
-if (!linkedPgn || !loadGameFromPgn(linkedPgn)) newGame();
+const bootParams = new URLSearchParams(location.search);
+const linkedPgn = bootParams.get('pgn');
+const linkedFen = bootParams.get('fen');
+if (linkedPgn && loadGameFromPgn(linkedPgn)) {
+  // reviewing a shared game
+} else if (!linkedFen || !startFromFen(linkedFen)) {
+  newGame();
+}
 
 // Console/debug handle
-window.game = { chess, engine, move: applyUserMove, newGame, sounds, hint, startTrainer, gotoPly, loadGame: loadGameFromPgn };
+window.game = {
+  chess, engine, move: applyUserMove, newGame, sounds, hint, startTrainer,
+  gotoPly, loadGame: loadGameFromPgn, startFromFen, savePosition: savePositionLink,
+};
