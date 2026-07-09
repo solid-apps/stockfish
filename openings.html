@@ -80,6 +80,14 @@
       max-width: 14em;
     }
     li.hide, section.hide { display: none; }
+    /* stripe by who is to move when the line ends */
+    li.btm a { background: #edeae4; }
+    li.btm a:hover { background: rgba(98, 153, 36, 0.12); }
+    .stm {
+      flex: 0 0 auto;
+      font-size: 0.7rem;
+      line-height: 1;
+    }
     #status { color: #6f6c66; font-size: 0.9rem; }
     @media (max-width: 560px) { .moves { display: none; } }
   </style>
@@ -93,6 +101,7 @@
       no upload, no record.</p>
     <input id="filter" type="search" placeholder="Filter — try “najdorf”, “king's gambit”, or “B33”" autocomplete="off">
     <p id="status">Loading openings…</p>
+    <p class="sub">Rows show whose move it is when the line ends: ○ you play White · ● you play Black (shaded).</p>
     <div id="book"></div>
   </main>
   <script>
@@ -127,9 +136,16 @@
           const li = document.createElement('li');
           const a = document.createElement('a');
           a.href = `./?pgn=${encodeURIComponent(o.pgn)}`;
-          a.innerHTML = `<span class="eco">${o.eco}</span><span class="name"></span><span class="moves"></span>`;
-          a.children[1].textContent = o.name;
-          a.children[2].textContent = o.pgn;
+          // moves played = tokens that aren't move numbers; odd → White just
+          // moved, so the visitor plays Black (shaded row)
+          const plies = o.pgn.split(/\s+/).filter((t) => !t.endsWith('.')).length;
+          const blackToMove = plies % 2 === 1;
+          if (blackToMove) li.classList.add('btm');
+          a.innerHTML = `<span class="eco">${o.eco}</span><span class="stm"></span><span class="name"></span><span class="moves"></span>`;
+          a.children[1].textContent = blackToMove ? '●' : '○';
+          a.children[1].title = blackToMove ? 'you play Black' : 'you play White';
+          a.children[2].textContent = o.name;
+          a.children[3].textContent = o.pgn;
           li.dataset.key = `${o.eco} ${o.name}`.toLowerCase();
           li.appendChild(a);
           list.appendChild(li);
