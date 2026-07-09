@@ -628,7 +628,7 @@ function loadGameFromPgn(text) {
   } catch {
     return false;
   }
-  if (loaded.history().length < 2) return false;
+  if (loaded.history().length < 1) return false;
   trainer = null;
   startFen = null;
   trainerSelect.value = '';

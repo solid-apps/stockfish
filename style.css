@@ -263,6 +263,16 @@ h1 {
   outline: 1px solid #df5353;
 }
 
+.panel-links {
+  margin: 0;
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.panel-links a {
+  color: #629924;
+}
+
 #promo-overlay {
   position: absolute;
   inset: 0;

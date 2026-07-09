@@ -57,6 +57,11 @@ python3 -m http.server 8123
   like an opening-trainer card: opening the link drops you straight into the
   position against the engine, playing the side to move, and "New game"
   retries it. No storage anywhere — the URL is the save file.
+- Opening book (`openings.html`) — a standalone page listing all 3,733 named
+  ECO openings (data: [lichess-org/chess-openings](https://github.com/lichess-org/chess-openings),
+  CC0, converted once to `openings.json`), with a live filter. Every line
+  links to the app as a `?pgn=` URI: the opening appears on the board, ready
+  to step through or play out against the engine.
 - Endgame trainer: 270 positions from
   [melvincarvalho/endgames](https://github.com/melvincarvalho/endgames), each
   with a goal (convert the win / hold the draw). The engine defends at full

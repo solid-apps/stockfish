@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opening Book — Quiet Chess</title>
+  <meta name="description" content="Every ECO opening, playable: 3,733 named chess openings, each linking to a board where you play the line out against Stockfish — in your browser, no account.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>♞</text></svg>">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #edebe9;
+      color: #4d4d4d;
+      font-family: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+    }
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    h1 { font-size: 1.4rem; color: #333; margin: 0 0 4px; }
+    .sub { margin: 0 0 16px; font-size: 0.9rem; color: #6f6c66; }
+    .sub a { color: #629924; }
+    #filter {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1px solid #d9d9d9;
+      border-radius: 6px;
+      background: #fff;
+      color: #4d4d4d;
+      margin-bottom: 20px;
+    }
+    section { margin-bottom: 8px; }
+    h2 {
+      font-size: 1rem;
+      color: #333;
+      margin: 20px 0 8px;
+      position: sticky;
+      top: 0;
+      background: #edebe9;
+      padding: 8px 0 4px;
+    }
+    h2 small { color: #6f6c66; font-weight: normal; }
+    ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    li a {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding: 6px 12px;
+      text-decoration: none;
+      color: #333;
+      border-top: 1px solid #f0efed;
+      font-size: 0.9rem;
+    }
+    li:first-child a { border-top: none; }
+    li a:hover { background: rgba(98, 153, 36, 0.1); }
+    .eco {
+      font-family: monospace;
+      color: #6f6c66;
+      flex: 0 0 3em;
+    }
+    .name { flex: 1; }
+    .moves {
+      color: #a0a0a0;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 14em;
+    }
+    li.hide, section.hide { display: none; }
+    #status { color: #6f6c66; font-size: 0.9rem; }
+    @media (max-width: 560px) { .moves { display: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>♞ Opening Book</h1>
+    <p class="sub">Every named opening (ECO), playable. Click a line and
+      <a href="./">Quiet Chess</a> opens it on the board — step through the
+      moves, see the eval, and play it out against Stockfish. No account,
+      no upload, no record.</p>
+    <input id="filter" type="search" placeholder="Filter — try “najdorf”, “king's gambit”, or “B33”" autocomplete="off">
+    <p id="status">Loading openings…</p>
+    <div id="book"></div>
+  </main>
+  <script>
+    const VOLUMES = {
+      A: 'Flank openings — 1. c4, 1. Nf3, 1. f4 and friends',
+      B: 'Semi-open games — 1. e4 without 1... e5 (Sicilian, Caro-Kann, …)',
+      C: 'Open games — 1. e4 e5, and the French',
+      D: 'Closed games — 1. d4 d5 (Queen’s Gambit, Slav, Grünfeld)',
+      E: 'Indian defences — 1. d4 Nf6 2. c4',
+    };
+
+    const book = document.getElementById('book');
+    const status = document.getElementById('status');
+    const filter = document.getElementById('filter');
+
+    fetch('openings.json')
+      .then((r) => r.json())
+      .then((openings) => {
+        const frag = document.createDocumentFragment();
+        let list = null;
+        let volume = '';
+        for (const o of openings) {
+          if (o.eco[0] !== volume) {
+            volume = o.eco[0];
+            const section = document.createElement('section');
+            const h2 = document.createElement('h2');
+            h2.innerHTML = `Volume ${volume} <small>— ${VOLUMES[volume] || ''}</small>`;
+            list = document.createElement('ol');
+            section.append(h2, list);
+            frag.append(section);
+          }
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = `./?pgn=${encodeURIComponent(o.pgn)}`;
+          a.innerHTML = `<span class="eco">${o.eco}</span><span class="name"></span><span class="moves"></span>`;
+          a.children[1].textContent = o.name;
+          a.children[2].textContent = o.pgn;
+          li.dataset.key = `${o.eco} ${o.name}`.toLowerCase();
+          li.appendChild(a);
+          list.appendChild(li);
+        }
+        book.appendChild(frag);
+        status.textContent = `${openings.length} openings.`;
+
+        filter.addEventListener('input', () => {
+          const q = filter.value.trim().toLowerCase();
+          let shown = 0;
+          for (const section of book.children) {
+            let any = false;
+            for (const li of section.lastElementChild.children) {
+              const hit = !q || li.dataset.key.includes(q);
+              li.classList.toggle('hide', !hit);
+              if (hit) { any = true; shown++; }
+            }
+            section.classList.toggle('hide', !any);
+          }
+          status.textContent = q ? `${shown} matching.` : `${book.dataset.total} openings.`;
+        });
+        book.dataset.total = openings.length;
+      })
+      .catch(() => { status.textContent = 'Could not load openings.json.'; });
+  </script>
+</body>
+</html>
