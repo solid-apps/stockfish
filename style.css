@@ -4,6 +4,11 @@
   --board-size: min(88vw, 560px);
 }
 
+html {
+  /* reserve scrollbar space so its appearance never shifts the board */
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -14,7 +19,10 @@ body {
 }
 
 main {
-  margin: auto;
+  /* horizontal centering only: vertical `auto` recentered the layout when
+     the analysis graph appeared/disappeared, moving the board under
+     chessground's cached bounds and breaking click targets */
+  margin: 0 auto;
   display: flex;
   gap: 24px;
   padding: 24px;

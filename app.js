@@ -205,6 +205,7 @@ async function analyseGame() {
     viewPly: moves.length,
   };
   analysisEl.classList.remove('hidden');
+  ground.redrawAll(); // graph changed the layout — refresh cached board bounds
   const finished = chess.isGameOver();
   for (let i = 0; i < a.fens.length; i++) {
     summaryEl.textContent = `Analysing… ${i + 1}/${a.fens.length}`;
@@ -327,10 +328,12 @@ function setBarFromAnalysis(ply) {
 }
 
 function clearAnalysis() {
+  const wasShown = !analysisEl.classList.contains('hidden');
   analysis = null;
   analysisEl.classList.add('hidden');
   graphEl.innerHTML = '';
   summaryEl.textContent = '';
+  if (wasShown) ground.redrawAll(); // layout shifted back — refresh board bounds
 }
 
 movesEl.addEventListener('click', (e) => {
